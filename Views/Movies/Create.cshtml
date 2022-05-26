@@ -1,0 +1,67 @@
+﻿@model soprosopro.ViewModels.SelectGenres
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Movie.Title" class="control-label"></label>
+                <input asp-for="Movie.Title" class="form-control" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+             @*<div class="form-group"   
+            <label class="control-label">Genres</label>
+            <select asp-for="SelectedGenres" class="form-control js-example-basic-multiple" asp-items="Model.GenreList">
+                </select>
+            <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+        </div>
+           <div class="form-group"   
+            <label class="control-label">Actors</label>
+            <select asp-for="SelectedActors" class="form-control js-example-basic-multiple" asp-items="Model.ActorList">
+                </select>
+            <span asp-validation-for="SelectedActors" class="text-danger"></span>
+        </div>
+           <div class="form-group"   
+            <label class="control-label">Directors</label>
+            <select asp-for="SelectedDirectors" class="form-control js-example-basic-multiple" asp-items="Model.DirectorList">
+                </select>
+            <span asp-validation-for="SelectedDirectors" class="text-danger"></span>
+        </div>
+           <div class="form-group"   
+            <label class="control-label">Producers</label>
+            <select asp-for="SelectedProducers" class="form-control js-example-basic-multiple" asp-items="Model.ProducerList">
+                </select>
+            <span asp-validation-for="SelectedProducers" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SelectedGenres").select2();
+             $("#SelectedActors").select2();
+              $("#SelectedDirectors").select2();
+               $("#SelectedProducers").select2();
+        });
+        </script>
+        }

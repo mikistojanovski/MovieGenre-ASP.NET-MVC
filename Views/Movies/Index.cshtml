@@ -1,0 +1,91 @@
+﻿@model IEnumerable<soprosopro.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Genres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Directors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+             <td>
+              @if (item.Genres!=null)
+              {
+                       foreach(var g in item.Genres){
+
+                            <a asp-controller="Genres" asp-action="Details" asp-route-id="@g.GenreId"> @g.Genres.Type </a> <br/>
+                       }                        
+                    }
+                </td>
+
+                 <td>
+                
+              @if (item.Actors!=null)
+              {
+                       foreach(var g in item.Actors){
+
+                            <a asp-controller="People" asp-action="Details" asp-route-id="@g.ActorId"> @g.Actor.Name </a> <br/>
+                       }
+                        
+                    }
+                </td>
+                 
+                  <td>
+                
+              @if (item.Directors!=null)
+              {
+                       foreach(var g in item.Directors){
+
+                            <a asp-controller="People" asp-action="Details" asp-route-id="@g.DirectorId"> @g.Director.Name </a> <br/>
+                       }
+                        
+                    }
+                </td>
+               <td>
+                
+              @if (item.Producers!=null)
+              {
+                       foreach(var g in item.Producers){
+
+                            <a asp-controller="People" asp-action="Details" asp-route-id="@g.ProducerId"> @g.Producer.Name </a> <br/>
+                       }
+                        
+                    }
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
